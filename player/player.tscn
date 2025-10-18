@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4xkjnyx3kug1"]
+[gd_scene load_steps=11 format=3 uid="uid://b4xkjnyx3kug1"]
 
 [ext_resource type="Script" uid="uid://ceohufh3x2wkp" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bv5a4dy0igx0t" path="res://player/states/idle.gd" id="2_rkbax"]
@@ -11,9 +11,13 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
 size = Vector2(18, 48)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6k8r"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
 height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
+radius = 8.0
+height = 32.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
@@ -50,8 +54,15 @@ position = Vector2(0, 24)
 texture = SubResource("PlaceholderTexture2D_kqu6x")
 offset = Vector2(0, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_g6k8r")
+[node name="PlayerCollider_Idle" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CapsuleShape2D_boad6")
+
+[node name="PlayerCollider_Crouch" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_rgyib")
+disabled = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -30.0

@@ -11,6 +11,8 @@ var previous_state: PlayerState:
 #endregion
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var player_collider: CollisionShape2D = %PlayerCollider_Idle
+@onready var player_collider_crouch: CollisionShape2D = %PlayerCollider_Crouch
 
 
 

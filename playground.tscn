@@ -59,7 +59,7 @@ texture = SubResource("GradientTexture2D_rupst")
 shape = SubResource("RectangleShape2D_wt17y")
 
 [node name="Sprite2D7" type="Sprite2D" parent="."]
-position = Vector2(33.019722, 217.23322)
+position = Vector2(33.000004, 217)
 rotation = 1.5707941
 scale = Vector2(1.2837354, 1.5399779)
 texture = SubResource("GradientTexture2D_rupst")
@@ -93,7 +93,7 @@ scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_wt17y")
 
 [node name="Platform" type="Sprite2D" parent="."]
-position = Vector2(32.999878, 143.99998)
+position = Vector2(33, 135)
 rotation = 1.5707941
 scale = Vector2(0.1990924, 1.5387573)
 texture = SubResource("GradientTexture2D_rupst")

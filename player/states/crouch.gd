@@ -4,11 +4,15 @@ extends PlayerState
 func enter() -> void:
 #	Change sprite perhaps
 	player.sprite_2d.scale.y = 0.7
+	player.player_collider.disabled = true
+	player.player_collider_crouch.disabled = false
 	pass
 
 func exit() -> void:
 #	Revert the sprite
 	player.sprite_2d.scale.y = 1.0
+	player.player_collider.disabled = false
+	player.player_collider_crouch.disabled = true
 	pass
 
 func handle_inputs(_event: InputEvent) -> PlayerState:
