@@ -10,8 +10,12 @@ func exit() -> void:
 	player.gravity_multiplier = 1.0
 
 func handle_inputs(event: InputEvent) -> PlayerState:
+	if event.is_action_pressed("dash") and player.can_dash:
+		return dash
+		
 	if event.is_action_pressed("jump"):
 		player.buffer_input("jump")
+	
 	return next_state
 
 func physics_process(_delta: float) -> PlayerState:

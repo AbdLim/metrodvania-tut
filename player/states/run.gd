@@ -2,8 +2,12 @@ class_name PlayerStateRun
 extends PlayerState
 
 func handle_inputs(event: InputEvent) -> PlayerState:
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("dash") and player.can_dash:
+		return dash
+	
+	elif event.is_action_pressed("jump"):
 		player.buffer_input("jump")
+		
 	return next_state
 
 func process(_delta: float) -> PlayerState:

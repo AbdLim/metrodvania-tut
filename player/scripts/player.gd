@@ -19,6 +19,7 @@ var previous_state: PlayerState:
 #region /// Movement variables
 var direction: Vector2 = Vector2.ZERO
 var gravity_multiplier: float = 1.0
+var facing: int = 1 # i get this from last pressed on x_axis
 #endregion
 
 #region /// Exported Variables
@@ -27,7 +28,11 @@ var gravity_multiplier: float = 1.0
 @export var gravity: float = 980.0
 @export var coyote_time: float = 0.08
 @export var jump_buffer_time: float = 0.12
-@export var dash_cooldown: float = 0.25
+
+#Dash
+@export var dash_speed: float = 900.0
+@export var dash_time: float = 0.15
+@export var dash_cooldown: float = 3.0  # exported cooldown in seconds
 #endregion
 
 #region /// Timers
@@ -35,6 +40,12 @@ var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var drop_timer: float = 0.0
+var dash_timer: float = 0.0
+#endregion
+
+#region /// Dash control
+var can_dash: bool = true
+var prev_on_floor: bool = true
 #endregion
 
 func _ready() -> void:
@@ -55,6 +66,13 @@ func _physics_process(delta: float) -> void:
 	update_timers(delta)
 	apply_gravity(delta)
 	move_and_slide()
+	
+	var now_on_floor: bool = is_on_floor()
+	if not prev_on_floor and now_on_floor:
+		can_dash = true
+	prev_on_floor = now_on_floor
+	
+	
 	change_state(current_state.physics_process(delta))
 
 
@@ -99,6 +117,7 @@ func update_direction() -> void:
 	var y_axis = Input.get_axis("up", "down")
 	direction = Vector2(x_axis, y_axis)
 	if direction.x != 0:
+		facing = sign(direction.x)
 		sprite_2d.scale.x = sign(direction.x)
 
 func apply_gravity(delta: float) -> void:

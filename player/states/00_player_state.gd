@@ -8,6 +8,7 @@ extends Node
 @onready var fall: PlayerStateFall = %Fall
 @onready var crouch: PlayerStateCrouch = %Crouch
 @onready var drop: PlayerStateDrop = %Drop
+@onready var dash: PlayerStateDash = %Dash
 
 var player: Player
 var next_state: PlayerState = null

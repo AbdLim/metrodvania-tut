@@ -8,8 +8,12 @@ func enter() -> void:
 	player.velocity.y = -jump_velocity
 
 func handle_inputs(event: InputEvent) -> PlayerState:
+	if event.is_action_pressed("dash") and player.can_dash:
+		return dash
+		
 	if event.is_action_released("jump"):
 		player.velocity.y *= 0.5
+	
 	return next_state
 
 func physics_process(_delta: float) -> PlayerState:
